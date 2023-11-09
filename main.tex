@@ -1,0 +1,98 @@
+\documentclass[a4paper]{article}
+\usepackage[margin=0.65in]{geometry}
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{graphicx}
+\usepackage[labelsep=quad,indention=10pt]{subfig}
+
+\usepackage[T1]{fontenc}
+\usepackage{blindtext}
+
+
+%% Useful packages
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\A}{\mathbb{A}}
+
+\newcommand{\ZZ }{\mathbb{Z}}
+\newcommand{\PP}{\mathfrak{P}}
+\DeclareMathOperator{\argmax}{argmax}
+\title{Machine Learning}
+\author{Ravi Donepudi}
+\begin{document}
+\maketitle
+These are notes I made studying for interviews for data science roles. Use them at your own risk. 
+\section{Probability}
+\subsection{Basic rules}
+
+\begin{enumerate}
+    \item For events $x,y$, we have $P(x \text{ or } y)=P(x)+P(y)-P(x \text{ and } y)$. If $x$ and $y$ are disjoint, this simplifies to  $P(x\text{ or } y ) = P(x)+P(y)$.
+    \item The conditional Probability\footnote{Assuming $P(y)\neq 0$} of $x$ given $y$: $P(x|y):= \frac{P(x \text{ and } y)}{P(y)} $.
+    \item For events $x,y$, we have $P(x \text{ and } y) = P(x|y)P(y) = P(y|x)P(x)$. If $x$ and $y$ are independant events then $P(x \text{ and } y) = P(x)P(y)$.
+    \item For conditional probabilities, we have the rule that $P(x|y,z) = P(x|y)P($
+    
+\end{enumerate}
+
+\section{Algorithms}
+\subsection{Conventions}
+\begin{itemize}
+    \item Elements of $\RR^d$ are assumed, by default, to be column vectors, i.e. $(x_1,\ldots, x_d)^T$.
+    \item $X$ typically denotes a vector $(x_1,\ldots, x_n)^T$ of input variables and $x$
+    \item $d$ denotes the number of features (typically not including the bias).
+    \item $n$ denotes the number of training examples and the $i$-th training example is typically indicated as $x^(i)$.
+    \item 
+\end{itemize}
+
+\subsection{Linear Regression}
+\begin{enumerate}
+    \item Given a real world function $y$ depending on variables $x=(x_1,\ldots, x_d)^T$ and given $n$ training examples $(x^(j), y^(j))$ for $0\leq i \leq n$  want to approximate $y$ with a linear function $h(x) = w^Tx$ where $w=(w_1,\ldots w_d)$ and $b$ are fixed real numbers. 
+    \item Why linear function? Because simplest kind of function ever and straight lines are the simplest kind of trend.
+    \item Most commonly used cost function to measure goodness-of-fit is the least squared loss function, i.e. $$J(w) = \sum_{i=1}^n (y_i-w^Tx-b)^2$$. We want to find a $w$ that minimizes this. How? Take the gradient, set $=0$ and solve. 
+    \item Set $Y=(y^{(1)}\ldots y^{(n)})$ and $X$ be the matrix whose $j$-th row is the $j$-th training example $(x^{(1)},\ldots x^{(n)})$  Get closed form for $w$ and $b$ values minimizing $J(w)$ as $$(w,b)^T = (X^TX )^{-1}X^Ty$$
+    
+    \item Also can use gradient descent given by (vectorized) update below, where $\alpha $ is the learning rate.
+    $$w:=w+\alpha\left(\sum_{j=1}^n(y^{(j)}-h_w(x^{(j)})x^{(j)}\right) $$.
+    \item Why least squares for cost function? This is what we get when we try to do maximum likelihood estimation of $(w,b)$ assuming i.i.d normal residuals in $$ y_i = w^Tx_i +b+\epsilon_i$$ with an independance assumption on the sampling. Build the likelihood function $$\mathcal L(w,b, (x^{(j)},y^{(j)})) = \prod P(y^{(i)}|x^{(i)};w,b) $$
+        and take it's $(w,b)$-gradient and we basically get $J(w)$ modulo a constant term.
+\end{enumerate}
+    
+   
+\subsection{Logistic regression}
+
+\begin{enumerate}
+    \item Logit function $$f(x) = \frac{1}{1+e^{-t}}, \quad f(0)=\frac{1}{2}, \quad \lim_{t\to \infty} f(t) = 1, \quad \lim_{t\to -\infty} f(t) = 0.$$
+    Use the various features $w_i$
+    \item The assumptions of one variant of a Gaussian Naive
+    Bayes classifier imply the parametric form of P(Y|X) used in Logistic Regression. 
+    \item GNB and Logistic Regression converge toward their asymptotic accuracies
+    at different rates. As Ng \& Jordan (2002) show, GNB parameter estimates
+    converge toward their asymptotic values in order $\log n$ examples, where $n$
+    is the dimension of $X$. In contrast, Logistic Regression parameter estimates
+    converge more slowly, requiring order $n$ examples. The authors also show
+    that in several data sets Logistic Regression outperforms GNB when many
+    training examples are available, but GNB outperforms Logistic Regression
+    when training data is scarce.
+    
+\end{enumerate}
+\section{Miscellaneous}
+\begin{enumerate}
+    \item MLE vs MAP: $${\argmax}_{\theta} P(D|\theta)\quad \text{versus} \quad \argmax_{\theta} P(\theta|D) = \argmax_{\theta} P(D|\theta)P(\theta),$$ 
+    where we assume a prior distribution shape in the latter.
+    \item Non-parametric vs parametric: Parametric just means that we are going to use the training data to train some \emph{parameters} and use just those for prediction. No more reason to keep the training data. Eg: Linear, Logistic regressions and Naive Bayes. Non-parametric just means that we have to keep the entire training set around to predict the next test example. Eg: $k$-nearest neighbors
+\end{enumerate}
+\section{Useful links }
+\begin{enumerate}
+\item \href{http://cs229.stanford.edu/notes2020spring/cs229-notes-deep_learning.pdf}{Neural Network Notes (21 pages)}: Definitions of neural networks and derivation of backpropagation algorithms.
+    \item \href{https://www.cs.cmu.edu/~tom/mlbook/NBayesLogReg.pdf}{Naive Bayes vs. Logistic Regression}
+    \item \href{https://sgfin.github.io/files/notes/CS229_Lecture_Notes.pdf}{Andrew Ng's Machine Learning Notes}
+    \item \href{http://cs229.stanford.edu/notes2021spring/notes2021spring/python-review-code.pdf}{Numpy and Matplotlib primer}
+    \item\href{http://www.cs.cmu.edu/~tom/mlbook/Joint_MLE_MAP.pdf}{MLE vs MAP estimators}
+\end{enumerate}
+
+\end{document}
