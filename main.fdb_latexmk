@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1699734624 "c:/Users/iluvm/Desktop/github/tex-notes/main.tex" "main.pdf" "main" 1699734625 0
-  "c:/Users/iluvm/Desktop/github/tex-notes/main.tex" 1699585360 5916 dd372f38c5641bcfbe722bf800e2ffa8 ""
+["pdflatex"] 1699749119 "c:/Users/iluvm/Desktop/github/tex-notes/main.tex" "main.pdf" "main" 1699749120 0
+  "c:/Users/iluvm/Desktop/github/tex-notes/main.tex" 1699749118 5943 01f3d28aea12b463a28b1f7f99d428a8 ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1699594529 2971 def0b6c1f0b107b3b936def894055589 ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1699594529 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1699595274 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -201,9 +201,9 @@
   "c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1699598099 4627530 15094a22717cd5e44aa0d2c006293935 ""
   "c:/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1699598166 6884860 96866912bfad4c514479ed81ba24fd15 ""
   "c:/texlive/2023/texmf.cnf" 1699598087 713 e69b156964470283e0530f5060668171 ""
-  "main.aux" 1699734625 1163 f68270ab375cdf1246815e016d5e25ac "pdflatex"
-  "main.out" 1699734625 940 b60a5d1cec43e49d4b718c0e9ca45125 "pdflatex"
-  "main.tex" 1699585360 5916 dd372f38c5641bcfbe722bf800e2ffa8 ""
+  "main.aux" 1699749120 1163 f68270ab375cdf1246815e016d5e25ac "pdflatex"
+  "main.out" 1699749120 940 b60a5d1cec43e49d4b718c0e9ca45125 "pdflatex"
+  "main.tex" 1699749118 5943 01f3d28aea12b463a28b1f7f99d428a8 ""
   (generated)
   "main.aux"
   "main.log"
